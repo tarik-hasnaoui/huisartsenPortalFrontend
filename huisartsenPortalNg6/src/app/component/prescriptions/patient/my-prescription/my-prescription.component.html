@@ -1,0 +1,31 @@
+<div class="jumbtron">
+  <app-layout></app-layout>
+  <div class="row">
+    <div class="col-md-2">
+      <app-sidebar></app-sidebar>
+    </div>
+    <h2> Prescription Details</h2>
+    <div class="col-md-6">
+      <div class="jumbotron">
+          <div class="prescriptionDetails">
+            <h3>Doctor</h3>
+            <div>Name: {{this.patientPrescription?.doctor.firstName}} {{this.patientPrescription?.doctor.lastName}}
+            </div>
+            <div>Bsn Number: {{this.patientPrescription?.doctor.bsnNumber}}</div>
+            <hr />
+            <h3>Patient</h3>
+            <div>Name: {{this.patientPrescription?.patient.firstName}} {{this.patientPrescription?.patient.lastName}}
+            </div>
+            <div>Bsn Number: {{this.patientPrescription?.patient.bsnNumber}}</div>
+            <hr />
+            <h3>Medication</h3>
+            <div *ngFor=" let medication of this.patientPrescription?.medications">
+              Name: {{medication?.name}}
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <!--</div>-->
+  </div>
+</div>

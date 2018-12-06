@@ -1,0 +1,28 @@
+.jumbotron {
+  max-width: 700px;
+  margin: 105px auto;
+
+}
+.prescriptionDetails{
+  font-family: "Arial Rounded MT Bold";
+  font-size: 20px;
+  font-weight: bold;
+  border: 2px solid dimgray;
+  padding: 20px;
+}
+
+.prescriptionDetails h3{
+  font-family: "Arial Rounded MT Bold";
+  font-size: 20px;
+  font-weight: bold;
+  color: maroon;
+}
+
+.prescriptionDetails hr{
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}

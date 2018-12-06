@@ -1,0 +1,7 @@
+{
+  "realm": "angular spring boot",
+  "auth-server-url": "http://192.168.99.100:8000/auth",
+  "ssl-required": "external",
+  "resource": "frontend",
+  "public-client": true
+}

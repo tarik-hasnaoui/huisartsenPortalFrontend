@@ -1,0 +1,30 @@
+<div class="jumbtron">
+  <app-layout></app-layout>
+  <div class="row" >
+    <div class="col-md-2" >
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-10" style="margin-top: 90px">
+      <h2> My prescription </h2>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Doctor</th>
+          <th scope="col">Patient</th>
+          <th scope="col">Medications</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let pres of service.prescriptionList">
+          <td >{{pres.doctor.bsnNumber}} - {{pres.doctor.firstName}} {{pres.doctor.lastName}}</td>
+          <td >{{pres.patient.bsnNumber}} - {{pres.patient.firstName}} {{pres.patient.lastName}}</td>
+          <td class="medicationList" >
+            <li *ngFor="let medication of pres.medications">{{medication.name}}</li>
+          </td>
+          <td><button (click)="prescriptionDetails(pres.prescriptionId)" style="margin-left: 10px;" class="btn btn-info"> Details</button></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

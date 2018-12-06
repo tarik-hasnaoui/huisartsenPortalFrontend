@@ -1,0 +1,137 @@
+<div class="jumbtron">
+  <app-layout></app-layout>
+  <div class="row" >
+    <div class="col-md-2" >
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-10">
+      <div class="jumbotron" >
+        <form novalidate id="prescriptionForm" [formGroup]="prescriptionForm" (submit)="onSubmit(prescriptionForm)"
+              autocomplete="off">
+          <input type="hidden" formControlName="prescriptionId" id="prescriptionId">
+          <h5>DATUM</h5>
+          <div class="col-12">
+            <div class="form-group">
+              <input type="date" formControlName="date" class="form-control">
+            </div>
+          </div>
+
+          <!-- doctor info -->
+          <h5>DOCTOR</h5>
+          <div class="row" formArrayName="doctor">
+            <div class="col-12">
+              <div class="form-group">
+                <input type="text" formControlName="bsnNumber" id="doctorBsnNumber"
+                       class="form-control">
+                <div *ngIf="doctorBsnNumber.invalid && (doctorBsnNumber.dirty || doctorBsnNumber.touched)"
+                     class="alert alert-danger">
+                  <div *ngIf="doctorBsnNumber.errors.required">
+                    Name is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <input type="text"  formControlName="firstName" id="doctorFnText"
+                       class="form-control">
+                <div *ngIf="doctorFirstName.invalid && (doctorFirstName.dirty || doctorFirstName.touched)"
+                     class="alert alert-danger">
+                  <div *ngIf="doctorFirstName.errors.required">
+                    Name is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <input type="text"  formControlName="lastName" id="doctorLnText"
+                       class="form-control">
+                <div *ngIf="doctorLastName.invalid && (doctorLastName.dirty || doctorLastName.touched)"
+                     class="alert alert-danger">
+                  <div *ngIf="doctorLastName.errors.required">
+                    Name is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- patient info -->
+          <h5>PATIENT</h5>
+          <div class="row" formArrayName="patient">
+            <div class="col-12">
+              <div class="form-group">
+                <input type="text" formControlName="bsnNumber" id="patientBsnNumber" placeholder="Enter bsnNumber "
+                       class="form-control">
+                <div *ngIf="patientBsnNumber.invalid && (patientBsnNumber.dirty || patientBsnNumber.touched)"
+                     class="alert alert-danger">
+                  <div *ngIf="patientBsnNumber.errors.required">
+                    Name is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <input type="text" formControlName="firstName" id="fnText" placeholder="Enter first name" class="form-control">
+                <div *ngIf="patientFirstName.invalid && (patientFirstName.dirty || patientFirstName.touched)"
+                     class="alert alert-danger">
+                  <div *ngIf="patientFirstName.errors.required">
+                    Name is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <input type="text" formControlName="lastName" id="lnText" placeholder="Enter last name" class="form-control">
+                <div *ngIf="patientLastName.invalid && (patientLastName.dirty || patientLastName.touched)"
+                     class="alert alert-danger">
+                  <div *ngIf="patientLastName.errors.required">
+                    Name is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- medication form portion -->
+          <div class="row" formArrayName="medications">
+            <div class="col-12" *ngFor="let group of medicationArray.controls; let i = index;" [formGroupName]="i">
+              <div class="row">
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col-8">
+                      <h5>MEDICATION {{i+1}}</h5>
+                    </div>
+                    <div class="col-2">
+                      <div class="glyphicon glyphicon-plus" (click)="addMedication()"></div>
+                    </div>
+                    <div class="col-2">
+                      <div class="glyphicon glyphicon-minus" (click)="removeMedication(i)"></div>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <input type="text" formControlName="name" id="addText" placeholder="Enter medication" class="form-control">
+                  <small *ngIf="group.controls.name.invalid && group.controls.name.touched" class="form-text custom-invalid-feedback">Field is required</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" [disabled]="prescriptionForm.invalid" class="btn btn-secondary btn-lg btn-block">SUBMIT</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

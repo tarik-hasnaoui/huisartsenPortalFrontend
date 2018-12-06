@@ -1,0 +1,26 @@
+<div id="sidebar" role="navigation">
+  <div class="welkom">
+    <div class="glyphicon glyphicon-user user"></div>
+    <div class="naam">{{this.userDetails.firstName}}<br/>
+      {{this.userDetails.attributes?.doctorBsnNumber}}<br/>
+      <span style="color:darkblue">{{this.userDetails.username}}</span> <br/>
+    </div>
+    <nav class="nav-sidebar">
+      <ul class="nav">
+        <li *ngIf="this.roles == 'doctor'"><a routerLinkActive="active" routerLink="/list-prescription"
+                                              [routerLinkActiveOptions]="{exact: true}"><i
+          class="glyphicon glyphicon-th"></i>Dashboard<span class="glyphicon glyphicon-chevron-right"></span></a></li>
+        <!--<li class="nav-divide  ></li>-->
+        <li><a routerLinkActive="active" routerLink="/"><i class="glyphicon glyphicon-home"></i>Home<span
+          class="glyphicon glyphicon-chevron-right"></span></a></li>
+        <!--<li class="nav-divider"></li>-->
+        <li *ngIf="this.roles == 'patient'"><a routerLink="/my-list-prescription" routerLinkActive="active"><i
+          class="glyphicon glyphicon-new-window"></i>My Prescription<span class="glyphicon glyphicon-chevron-right"></span></a>
+        </li>
+        <!--<li class="nav-divider"></li>-->
+        <li><a routerLinkActive="active" (click)="logout()"><i class="glyphicon glyphicon-off"></i> Sign Out<span
+          class="glyphicon glyphicon-chevron-right"></span></a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
